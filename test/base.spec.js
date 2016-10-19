@@ -1,6 +1,6 @@
 /* global describe, it */
 const assert = require('assert')
-const Ash = require('../src').Ash
+const Base = require('../src').Base
 
 describe('Ash base class', function () {
   it('mixin method with direct inheritance', function () {
@@ -10,7 +10,7 @@ describe('Ash base class', function () {
       }
     }
 
-    class Test extends Ash.mixin(Mixin) {
+    class Test extends Base.mixin(Mixin) {
       one () {
         return 'one'
       }
@@ -28,7 +28,7 @@ describe('Ash base class', function () {
       }
     }
 
-    class SubClass extends Ash {}
+    class SubClass extends Base {}
 
     class Test extends SubClass.mixin(Mixin) {
       one () {
@@ -52,7 +52,7 @@ describe('Ash base class', function () {
       four () { return 'four' }
     }
 
-    class SubClass extends Ash {}
+    class SubClass extends Base {}
     class Test extends SubClass.mixin(MixinOne, MixinTwo, MixinThree) {
       one () { return 'one' }
     }

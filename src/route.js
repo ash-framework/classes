@@ -1,8 +1,8 @@
 'use strict'
 
-const Ash = require('./ash')
+const Base = require('./base')
 
-module.exports = class Route extends Ash {
+module.exports = class Route extends Base {
   deserialize (params, query, body, httpContext) {
 
   }

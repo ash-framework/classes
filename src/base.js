@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = class Ash {
+module.exports = class Base {
   static mixin (...args) {
     class Mixed extends this {}
 

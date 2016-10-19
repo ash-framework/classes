@@ -1,8 +1,8 @@
 'use strict'
 
-const Ash = require('./ash')
+const Base = require('./base')
 
-module.exports = class Router extends Ash {
+module.exports = class Router extends Base {
   static map (routeMapFunction) {
     this.routeMapFunction = routeMapFunction
   }
