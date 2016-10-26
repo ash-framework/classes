@@ -1,6 +1,7 @@
 'use strict'
 
 const Base = require('./base')
+const Log = require('@ash-framework/log')
 
 module.exports = class Route extends Base {
   deserialize (params, query, body, httpContext) {
@@ -24,6 +25,6 @@ module.exports = class Route extends Base {
   }
 
   error (err) {
-    console.error(err)
+    new Log().error(err)
   }
 }
