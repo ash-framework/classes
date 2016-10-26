@@ -39,7 +39,9 @@
     "framework",
     "classes"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@ash-framework/log": "^1.0.0"
+  },
   "devDependencies": {
     "chai": "^3.5.0",
     "github": "^5.2.2",
