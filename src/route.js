@@ -4,23 +4,33 @@ const Base = require('./base')
 const Log = require('@ash-framework/log')
 
 module.exports = class Route extends Base {
-  deserialize (params, query, body, httpContext) {
+  constructor (httpContext) {
+    super(httpContext)
+    const {request} = httpContext
+
+    this.httpContext = httpContext
+    this.body = request.body
+    this.params = request.params
+    this.query = request.query
+  }
+
+  deserialize () {
 
   }
 
-  beforeModel (params, query, body, httpContext) {
+  beforeModel () {
 
   }
 
-  model (params, query, body, httpContext) {
+  model () {
     console.log(`Route '${this.name}' must define a 'model' method`)
   }
 
-  afterModel (model, params, query, body, httpContext) {
+  afterModel (model) {
     return model
   }
 
-  serialize (model, params, query, body, httpContext) {
+  serialize (model) {
     return model
   }
 
