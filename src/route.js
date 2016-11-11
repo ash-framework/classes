@@ -35,6 +35,6 @@ module.exports = class Route extends Base {
   }
 
   error (err) {
-    new Log().error(err)
+    return err
   }
 }
