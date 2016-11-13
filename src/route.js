@@ -1,7 +1,6 @@
 'use strict'
 
 const Base = require('./base')
-const Log = require('@ash-framework/log')
 
 module.exports = class Route extends Base {
   constructor (httpContext) {
