@@ -6,12 +6,25 @@ const Inject = require('./mixins/inject')
 module.exports = class Route extends Base.mixin(Inject) {
   constructor (httpContext) {
     super(httpContext)
-    const {request} = httpContext
+    const {request, response} = httpContext
+    const {body, params, query, headers, method} = request
 
-    this.httpContext = httpContext
-    this.body = request.body
-    this.params = request.params
-    this.query = request.query
+    this.body = body
+    this.params = params
+    this.query = query
+    this.headers = headers
+    this.method = method
+
+    this.request = request
+    this.response = response
+  }
+
+  accepts (types) {
+    return this.request.accepts(types)
+  }
+
+  is (type) {
+    return this.request.is(type)
   }
 
   deserialize () {
@@ -27,11 +40,11 @@ module.exports = class Route extends Base.mixin(Inject) {
   }
 
   afterModel (model) {
-    return model
+
   }
 
   serialize (model) {
-    return model
+
   }
 
   error (err) {

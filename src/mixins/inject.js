@@ -3,8 +3,7 @@ const path = require('path')
 
 module.exports = class Inject {
   inject () {
-    const request = this.httpContext.request
-    console.log(this.req)
+    const {request} = this
     return {
       service: serviceName => {
         if (!services.has(serviceName)) {
