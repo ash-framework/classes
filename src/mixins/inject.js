@@ -2,10 +2,10 @@ const services = new Map()
 const path = require('path')
 
 module.exports = class Inject {
-  inject () {
+  get inject () {
     const {request} = this
     return {
-      service: serviceName => {
+      service (serviceName) {
         if (!services.has(serviceName)) {
           services.set(serviceName, new WeakMap())
         }
