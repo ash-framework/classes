@@ -9,7 +9,8 @@ module.exports = class Base {
         .filter(name => name !== 'constructor')
 
       for (let name of methodNames) {
-        Mixed.prototype[name] = Mixin.prototype[name]
+        const descriptor = Reflect.getOwnPropertyDescriptor(Mixin.prototype, name)
+        Reflect.defineProperty(Mixed.prototype, name, descriptor)
       }
     })
 
