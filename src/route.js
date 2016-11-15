@@ -1,8 +1,9 @@
 'use strict'
 
 const Base = require('./base')
+const Inject = require('./mixins/inject')
 
-module.exports = class Route extends Base {
+module.exports = class Route extends Base.mixin(Inject) {
   constructor (httpContext) {
     super(httpContext)
     const {request} = httpContext
