@@ -14,7 +14,7 @@ module.exports = class Inject {
           const Service = require(path.join(process.cwd(), 'app', 'services') + '/' + serviceName)
           service.set(request, new Service())
         }
-        return service.get(request)
+        this[serviceName] = service.get(request)
       }
     }
   }

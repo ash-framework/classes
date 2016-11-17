@@ -6,6 +6,7 @@ const Inject = require('./mixins/inject')
 module.exports = class Route extends Base.mixin(Inject) {
   constructor (httpContext) {
     super(httpContext)
+
     const {request, response} = httpContext
     const {body, params, query, headers, method} = request
 
@@ -17,6 +18,15 @@ module.exports = class Route extends Base.mixin(Inject) {
 
     this.request = request
     this.response = response
+
+    // services
+    this.constructor.services(service => {
+      this.inject.service.call(this, service)
+    })
+  }
+
+  static services () {
+
   }
 
   accepts (types) {
