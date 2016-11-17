@@ -3,7 +3,7 @@
 const Base = require('./base')
 const Inject = require('./mixins/inject')
 
-module.exports = class Route extends Base.mixin(Inject) {
+module.exports = class Route extends Base {
   constructor (httpContext) {
     super(httpContext)
 
@@ -21,7 +21,26 @@ module.exports = class Route extends Base.mixin(Inject) {
 
     // services
     this.constructor.services(service => {
-      this.inject.service.call(this, service)
+      Inject.service.call(this, service)
+    })
+
+    // mixins
+    const mixins = []
+    this.constructor.mixins(mixin => {
+      mixins.push(mixin)
+    })
+
+    mixins.forEach(Mixin => {
+      const methodNames = Object.getOwnPropertyNames(Mixin.prototype)
+        .filter(name => name !== 'constructor')
+
+      class Mixed extends this.constructor {}
+      for (let name of methodNames) {
+        const descriptor = Reflect.getOwnPropertyDescriptor(Mixin.prototype, name)
+        Reflect.defineProperty(Mixed.prototype, name, descriptor)
+      }
+      Object.setPrototypeOf(this, Mixed.prototype)
+      this.constructor = Mixed
     })
   }
 
