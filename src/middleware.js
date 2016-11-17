@@ -1,7 +1,7 @@
 'use strict'
 
-const Base = require('./base')
+const Request = require('./request')
 
-module.exports = class Middleware extends Base {
+module.exports = class Middleware extends Request {
 
 }
