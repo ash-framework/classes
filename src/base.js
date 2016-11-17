@@ -3,7 +3,7 @@
 module.exports = class Base {
   constructor (...args) {
     const mixins = []
-    this.constructor.mixins(mixin => {
+    this.mixins(mixin => {
       mixins.push(mixin)
     })
 

@@ -17,12 +17,12 @@ module.exports = class Request extends Base {
     this.request = request
     this.response = response
 
-    this.constructor.services(service => {
+    this.services(service => {
       Inject.service.call(this, service)
     })
   }
 
-  static services () {
+  services () {
 
   }
 
