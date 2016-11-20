@@ -1,7 +1,7 @@
 const Base = require('./base')
 const Inject = require('./mixins/inject')
 
-module.exports = class Request extends Base {
+module.exports = class Http extends Base {
   constructor (...args) {
     super(...args)
 

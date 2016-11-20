@@ -1,7 +1,7 @@
 'use strict'
 
-const Request = require('./request')
+const Http = require('./http')
 
-module.exports = class Middleware extends Request {
+module.exports = class Middleware extends Http {
 
 }

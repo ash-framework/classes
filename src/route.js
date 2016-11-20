@@ -1,10 +1,10 @@
 'use strict'
 
-const Request = require('./request')
+const Http = require('./http')
 
 const middleware = new WeakMap()
 
-module.exports = class Route extends Request {
+module.exports = class Route extends Http {
   constructor (...args) {
     super(...args)
 
