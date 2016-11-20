@@ -18,7 +18,7 @@ module.exports = class Request extends Base {
     this.response = response
 
     this.services(service => {
-      Inject.service.call(this, service)
+      Inject.service(this, service)
     })
   }
 

@@ -2,8 +2,8 @@ const services = new Map()
 const path = require('path')
 
 module.exports = class Inject {
-  static service (serviceName) {
-    const {request} = this
+  static service (context, serviceName) {
+    const {request} = context
     if (!services.has(serviceName)) {
       services.set(serviceName, new WeakMap())
     }
@@ -12,6 +12,6 @@ module.exports = class Inject {
       const Service = require(path.join(process.cwd(), 'app', 'services') + '/' + serviceName)
       service.set(request, new Service())
     }
-    this[serviceName] = service.get(request)
+    context[serviceName] = service.get(request)
   }
 }
