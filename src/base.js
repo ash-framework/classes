@@ -7,6 +7,9 @@ function mixins (context, ...args) {
   })
 
   const className = context.constructor.name
+
+  // assign mixed in class the same name as the base class via
+  // assigning an anonymous class to a variable
   const tempClass = { [className]: class extends context.constructor {} }
   mixins.forEach(Mixin => {
     const methodNames = Object.getOwnPropertyNames(Mixin.prototype)
